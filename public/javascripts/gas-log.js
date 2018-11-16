@@ -18,7 +18,6 @@ angular.module('gas', [])
                     console.log(data);
                     makeGraph(data);
                     makeList(data);
-                    // angular.copy(data, $scope.comments);
                 });
             };
             $scope.deleteAll = function() {
@@ -26,6 +25,7 @@ angular.module('gas', [])
                     .success(function(data) {
                         console.log("delete worked");
                     });
+                    $scope.getAll();
             };
         }
     ]);
