@@ -66,7 +66,7 @@ function makeList(mdata) {
 
     for (var i = 0; i < mdata.length; i++) {
         if (mdata[i].date) {
-            var newListItem = "<li class='collection-item'> Date: " + mdata[i].date + "    Miles: " + mdata[i].miles + "    Gallons: " + mdata[i].gallons + "    Cost: $" + mdata[i].cost + "</li>";
+            var newListItem = "<li class='collection-item'> Date: " + mdata[i].date + "    MPG: " + mdata[i].miles / mdata[i].gallons +  "   Cost: " + mdata[i].cost + "</li>";
         listHtml +=  newListItem;
         } 
     }
