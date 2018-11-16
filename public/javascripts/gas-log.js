@@ -21,7 +21,7 @@ angular.module('gas', [])
                     // angular.copy(data, $scope.comments);
                 });
             };
-            $scope.deleteAll = function(comment) {
+            $scope.deleteAll = function() {
                 $http.delete('/gas')
                     .success(function(data) {
                         console.log("delete worked");
@@ -49,16 +49,26 @@ function makeGraph(mdata) {
     };
 
     var data = [trace1];
+    var layout = {
+        xaxis: {
+            title: 'Date'
+        },
+        yaxis: {
+            title: 'Miles per Gallons'
+        }
+    }
 
-    Plotly.newPlot('graphgoeshere', data);
+    Plotly.newPlot('graphgoeshere', data, layout);
 }
 
 function makeList(mdata) {
     var listHtml = "<ul class='collection'>";
 
     for (var i = 0; i < mdata.length; i++) {
-        var newListItem = "<li class='collection-item'>" + mdata[i].date + " " + mdata[i].miles + " " + mdata[i].gallons + " $" + mdata[i].cost + "</li>";
+        if (mdata[i].date) {
+            var newListItem = "<li class='collection-item'> Date: " + mdata[i].date + "    Miles: " + mdata[i].miles + "    Gallons: " + mdata[i].gallons + "    Cost: $" + mdata[i].cost + "</li>";
         listHtml +=  newListItem;
+        } 
     }
     listHtml += "</ul>";
 
