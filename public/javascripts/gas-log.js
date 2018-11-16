@@ -57,7 +57,7 @@ function makeList(mdata) {
     var listHtml = "<ul class='collection'>";
 
     for (var i = 0; i < mdata.length; i++) {
-        var newListItem = "<li class='collection-item'>" + mdata[i].date + " " + mdata[i].miles + " " + mdata[i].gallons + " $" + mdata[i].cost + "</li>";
+        var newListItem = "<li class='collection-item'>" + mdata[i].date + " " + mdata[i].miles / mdata[i].gallons + " MPG</li>";
         listHtml +=  newListItem;
     }
     listHtml += "</ul>";
