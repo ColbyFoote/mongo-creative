@@ -1,30 +1,48 @@
 <html>
 
 <head>
-    <title>Comments</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
-    <script src="javascripts/gas-log.js"></script>
-
+    <title>Gas Mileage</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="shortcut icon" type="image/png" href="./favicon.ico" />
 </head>
 
-<body ng-app="comment" ng-controller="MainCtrl">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="page-header">
-                <h1>Comments </h1>
-            </div>
-
-            <form ng-submit="addLog()" style="margin-top30px;">
-                <input type="text" ng-model="formContent"></input>
-                <button type="submit">Add Comment</button>
-            </form>
-            <div ng-repeat="comment in comments | orderBy: '-upvotes'">
-                <span class="glyphicon glyphicon-remove" ng-click="delete(comment)"></span>
-                <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span> {{comment.title}} - upvotes: {{comment.upvotes}}
+<body ng-app="Battles">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">Gas Mileage</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h5>Add Entry</h5>
+                <form id="commentForm" action="">
+                    <label for="date">Date: </label><input type="date" id="date" placeholder="enter today's date..."><br>
+                    <label for="miles">Miles: </label><input type="number" id="miles" placeholder="enter miles since last fill-up..."><br>
+                    <label for="gallons">Gallons of Fuel: </label><input type="number" id="gallons" placeholder="enter how much gas you put in your car..."><br>
+                    <label for="gallons">Cost of Fuel: </label><input type="number" id="cost" placeholder="enter how much the gas costed you spent..."><br>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                        <i class="material-icons right">check</i>
+                    </button>
+                </form>
             </div>
         </div>
+        <div class="row">
+            <div class="col s12">
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">No entries (Graph goes here)</div>
+            <div class="col s6">No entries</div>
+        </div>
+
     </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="./makeScatterPlot.js"></script>
+<script src="./makeCasualtyMap.js"></script>
 
 </html>
