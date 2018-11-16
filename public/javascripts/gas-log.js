@@ -1,14 +1,23 @@
-angular.module('comment', [])
+angular.module('gas', [])
     .controller('MainCtrl', [
         '$scope', '$http',
         function($scope, $http) {
             $scope.log = [];
             $scope.addLog = function() {
-                var newEntry = { date: $scope.formContent, miles: 0, gallons: 0, cost: 0 };
+                var newEntry = { date: $scope.date, miles: $scope.miles, gallons: $scope.gallons, cost: $scope.cost };
                 $http.post('/gas', newEntry).success(function(data) {
                     $scope.log.push(data);
                 });
-                $scope.formContent = '';
+                $scope.date = '';
+                $scope.miles = '';
+                $scope.gallons = '';
+                $scope.cost = '';
+            };
+            $scope.getAll = function() {
+                return $http.get('/gas').success(function(data) {
+                    console.log(data);
+                    // angular.copy(data, $scope.comments);
+                });
             };
         }
     ]);

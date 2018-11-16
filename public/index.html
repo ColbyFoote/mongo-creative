@@ -6,9 +6,11 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="shortcut icon" type="image/png" href="./favicon.ico" />
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="javascripts/gas-log.js"></script>
 </head>
 
-<body ng-app="Battles">
+<body ng-app="gas" ng-controller="MainCtrl">
     <nav>
         <div class="nav-wrapper">
             <a href="#" class="brand-logo center">Gas Mileage</a>
@@ -18,11 +20,11 @@
         <div class="row">
             <div class="col s12">
                 <h5>Add Entry</h5>
-                <form id="commentForm" action="">
-                    <label for="date">Date: </label><input type="date" id="date" placeholder="enter today's date..."><br>
-                    <label for="miles">Miles: </label><input type="number" id="miles" placeholder="enter miles since last fill-up..."><br>
-                    <label for="gallons">Gallons of Fuel: </label><input type="number" id="gallons" placeholder="enter how much gas you put in your car..."><br>
-                    <label for="gallons">Cost of Fuel: </label><input type="number" id="cost" placeholder="enter how much the gas costed you spent..."><br>
+                <form id="commentForm" action="" ng-submit="addLog(); getAll();">
+                    <label for="date">Date: </label><input type="date" id="date" placeholder="enter today's date..." ng-model="date"><br>
+                    <label for="miles">Miles: </label><input type="number" id="miles" placeholder="enter miles since last fill-up..." ng-model="miles"><br>
+                    <label for="gallons">Gallons of Fuel: </label><input type="number" id="gallons" placeholder="enter how much gas you put in your car..." ng-model="gallons"><br>
+                    <label for="gallons">Cost of Fuel: </label><input type="number" id="cost" placeholder="enter how much the gas costed you spent..." ng-model="cost"><br>
                     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                         <i class="material-icons right">check</i>
                     </button>
