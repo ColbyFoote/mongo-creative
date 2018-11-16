@@ -18,9 +18,9 @@ router.post('/gas', function(req, res, next) {
     res.json(gas);
   });
 });
-router.delete('/gas/:gas', function(req, res) {
+router.delete('/gas', function(req, res) {
   console.log("in Delete");
-  req.gas.remove();
+  Gas.remove().exec();
   res.sendStatus(200);
 });
 

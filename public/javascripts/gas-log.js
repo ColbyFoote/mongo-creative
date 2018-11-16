@@ -21,6 +21,12 @@ angular.module('gas', [])
                     // angular.copy(data, $scope.comments);
                 });
             };
+            $scope.deleteAll = function(comment) {
+                $http.delete('/gas')
+                    .success(function(data) {
+                        console.log("delete worked");
+                    });
+            };
         }
     ]);
 
